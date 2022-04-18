@@ -30,6 +30,16 @@ public:
 		cout << first << "," << second << endl;
 	}
 
+	void equal()
+	{
+		if (first == second) { cout << "They're equal" << endl; }
+	}
+	
+	void mltpl()
+	{
+		cout << first*second << endl; 
+	}
+
 	void subtraction(const PAIR& tmp1, const PAIR& tmp2, const PAIR& tmp3)
 	{
 		int a, b, c, d, e, f;
@@ -116,6 +126,8 @@ int main()
 	PAIR a(10, 16);
 	PAIR b(25, 15);
 	PAIR c(20, 28);
+	a.equal();
+	a.mltpl();
 	c.subtraction(a, b, c);
 
 	rational e(37, 74);
