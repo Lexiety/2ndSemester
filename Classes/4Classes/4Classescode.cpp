@@ -73,6 +73,28 @@ public:
 		simpleR(tmp1);
 	}
 
+	void multiply2(const rational& tmp1, const rational& tmp2)
+	{
+		int a = tmp1.first * tmp2.first;
+		int b = tmp1.second * tmp2.second;
+		first = a;
+		second = b;
+		simpleR(tmp1);
+	}
+
+	
+	void summarize3(const rational& tmp1, const rational& tmp2)
+	{
+		int a = 0;
+		int b = 0;
+		 a = tmp1.first * tmp2.second + tmp1.second * tmp2.first;
+		 b = tmp1.second * tmp2.second;
+		first = a;
+		second = b;
+		simpleR(tmp1);
+	}
+
+
 	void simpleR(const rational& tmp1)
 	{
 		int a = abs(tmp1.first);
@@ -82,8 +104,9 @@ public:
 			b = b - a;
 			if (b < a) { swap(a, b); }
 		}
-		first = first / a;
-		second = second / a;
+		if (a != 0) { first = first / a; }
+		if (a != 0) { second = second / a; }
+		cout << first << "/" << second<< endl;
 	}
 };
 
@@ -92,16 +115,18 @@ int main()
 {
 	PAIR a(10, 16);
 	PAIR b(25, 15);
-	PAIR c(20, 20);
+	PAIR c(20, 28);
 	c.subtraction(a, b, c);
-	rational d(12, 15);
+
 	rational e(37, 74);
 	rational f(14, 28);
+	rational x(156, 248);
+	rational y(18, 189);
 	f.simpleR(f);
-	f.print();
-	d.subtraction2(d, e);
-	d.print();
-	c.print();
+	e.multiply2(e, f);
+	rational u(7, 8);
+	u.simpleR(u);
+	x.subtraction2(x, y);
 	cout << endl;
 	return 0;
 }
