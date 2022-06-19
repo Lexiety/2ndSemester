@@ -54,7 +54,7 @@ int main()
 	int n;
 	string del;
 	int tmp = -1;
-	cout << "Количество работников (Максимум 10): ";
+	cout << "Количество студентов: ";
 	cin >> n;
 	formation(n);
 
@@ -103,13 +103,13 @@ int main()
 	cout << endl;
 
 
-	cout << "Фамилия для добавления: ";
+	cout << "Фамилия, перед которой добавить: ";
 	cin >> del;
 	int i = 0;
 	n--;
 	
 	for (i = 0; i < n; i++) {
-		if (line2[i].birth == del)
+		if (line2[i].postname == del)
 		{
 				
 			for (int j = n; j > i-1; j--)
