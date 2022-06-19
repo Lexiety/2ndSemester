@@ -298,7 +298,8 @@ public:
 			c+= (static_cast <Person*> (*p))->GetAge();
 			p++;
 		}
-		cout <<"Total age: "<<  c << endl;
+		
+		cout <<"Average age: "<<  c/cur << endl;
 	}
 	void HandleEvent(const TEvent& e)
 	{
