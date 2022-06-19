@@ -13,7 +13,19 @@ const int cmMake = 6;
 const int cmFind = 7;
 const int cmQuit = 101;
 
-
+struct TEvent
+{
+	int what;
+	union
+	{
+		int command;
+		struct
+		{
+			int message;
+			int a;
+		};
+	};
+};
 class Object
 {
 public:
@@ -91,19 +103,7 @@ public:
 		}
 	}
 };
-struct TEvent
-{
-	int what;
-	union
-	{
-		int command;
-		struct
-		{
-			int message;
-			int a;
-		};
-	};
-};
+
 
 
 class Abiturient : public Person
@@ -288,18 +288,17 @@ public:
 		if (cur == 0) return;
 		cur--;
 	}
-	void Find(int tmp)
+	void Find()
 	{
-		beg[tmp];
+		
 		Object** p = beg;
+		int c = 0;
 		for (int i = 0; i < cur; i++)
 		{
-			if (i == tmp - 1)
-			{
-				(*p)->Show();
-			}
+			c+= (static_cast <Person*> (*p))->GetAge();
 			p++;
 		}
+		cout <<"Total age: "<<  c << endl;
 	}
 	void HandleEvent(const TEvent& e)
 	{
@@ -407,8 +406,7 @@ public:
 				ClearEvent(event);
 				break;
 			case cmFind:
-				int tmp = event.a;
-				Find(tmp);
+				Find();
 				ClearEvent(event);
 				break;
 			}
@@ -418,7 +416,7 @@ public:
 
 int main()
 {
-	cout << "+ - add element" << "\n- - delete element" << "\nm<n> - make a group of n men" << "\ns - print the group" << "\nz<n> - Print the n element" << "\nq - The end" << "" << endl;
+	cout << "+ - add element" << "\n- - delete element" << "\nm<n> - make a group of n men" << "\ns - print the group" << "\nz - Summarized age" << "\nq - The end" << "" << endl;
 	Dialog D;
 	D.Execute();
 	return 0;
